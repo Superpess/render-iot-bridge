@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: iot-api
+    env: python
+    plan: starter
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port 10000
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+
+  - type: cron
+    name: openmeteo-et0-daily
+    env: python
+    schedule: "59 22 * * *"  # 22:59 UTC = 23:59 Rome fino al 29 Mar 2026 (ora solare)
+    buildCommand: pip install -r requirements.txt
+    startCommand: python job_et0.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: TB_HOST
+        value: https://thingsboard.cloud
