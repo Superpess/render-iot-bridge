@@ -52,26 +52,25 @@ def send_to_thingsboard(et0_value: float):
     r.raise_for_status()
 def main():
     try:
-        # Ritardo casuale per evitare rate limit Open-Meteo
+        # Ritardo anti-429
         delay = random.randint(10, 120)
         print(f"Delay anti-429: {delay}s")
         time.sleep(delay)
 
-        # Recupero ET0
+        # TEST: ET0 forzato a 0
         et0 = 0
-print("TEST MODE: ET0 forzato a 0")
-
+        print("TEST MODE: ET0 forzato a 0")
 
         # Invio a ThingsBoard
         send_to_thingsboard(et0)
 
-        # Timestamp Roma per log
         now_rome = datetime.now(pytz.timezone("Europe/Rome")).strftime("%Y-%m-%d %H:%M:%S")
         print(f"[OK] {now_rome} - sent {ET0_KEY}={et0} to ThingsBoard")
 
     except Exception as e:
         print(f"[WARN] ET0 job error (non blocking): {e}")
         return
+
 
 
 
