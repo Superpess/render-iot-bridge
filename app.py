@@ -7,7 +7,9 @@ app = FastAPI()
 
 @app.get("/health")
 def health():
+    print("HEALTH CALLED")
     return {"status": "ok"}
+
 
 @app.get("/time")
 def time_now():
