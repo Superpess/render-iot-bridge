@@ -59,9 +59,8 @@ def main():
         print(f"Delay anti-429: {delay}s")
         time.sleep(delay)
 
-        # TEST: ET0 forzato a 0
-        et0 = 0
-        print("TEST MODE: ET0 forzato a 0")
+        # Recupero ET0 reale da Open-Meteo
+        et0 = fetch_openmeteo_et0_daily(LAT, LON)
 
         # Invio a ThingsBoard
         send_to_thingsboard(et0)
@@ -72,6 +71,7 @@ def main():
     except Exception as e:
         print(f"[WARN] ET0 job error (non blocking): {e}")
         return
+
 
 
 
