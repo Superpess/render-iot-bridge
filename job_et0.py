@@ -50,6 +50,8 @@ def send_to_thingsboard(et0_value: float):
     payload = {ET0_KEY: et0_value}
     r = requests.post(url, json=payload, timeout=30)
     r.raise_for_status()
+
+
 def main():
     try:
         # Ritardo anti-429
