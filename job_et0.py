@@ -58,7 +58,9 @@ def main():
         time.sleep(delay)
 
         # Recupero ET0
-        et0 = fetch_openmeteo_et0_daily(LAT, LON)
+        et0 = 0
+print("TEST MODE: ET0 forzato a 0")
+
 
         # Invio a ThingsBoard
         send_to_thingsboard(et0)
