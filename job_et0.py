@@ -55,9 +55,11 @@ def send_to_thingsboard(et0_value: float):
 def main():
     try:
         # Ritardo anti-429
-        delay = random.randint(60, 1200)
-        print(f"Delay anti-429: {delay}s")
-        time.sleep(delay)
+        delay = random.randint(600, 1200)  # TEST: 10–20 minuti
+        print("DELAY RANGE TEST: 600-1200")
+
+        
+        
 
         # Recupero ET0 reale da Open-Meteo
         et0 = fetch_openmeteo_et0_daily(LAT, LON)
