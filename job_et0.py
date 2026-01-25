@@ -56,7 +56,6 @@ def main():
     try:
         # Ritardo anti-429
         delay = random.randint(600, 1200)  # TEST: 10–20 minuti
-        print("DELAY RANGE TEST: 600-1200")
 
         
         
